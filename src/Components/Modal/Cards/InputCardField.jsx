@@ -110,7 +110,7 @@ const InputCardField = ({ onValueChange, closeModal }) => {
               // value={cardNumber}
               // onChange={formatCardNumber}
               placeholder="Cvv"
-              className="w-full bg-transparent p-2 mx-6"
+              className="w-full ml-12 bg-transparent p-2 mx-6"
             />
 
             <CgMenuGridO className="text-[28px] text-greyFour" />
@@ -161,7 +161,7 @@ const InputCardField = ({ onValueChange, closeModal }) => {
               id=""
               required
               placeholder="**********"
-              className="w-full bg-transparent p-2 mx-6"
+              className="w-full ml-12 bg-transparent p-2 mx-6"
             />
 
             <CgMenuGridO className="text-[28px] text-greyFour" />

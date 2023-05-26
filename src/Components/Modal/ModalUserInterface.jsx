@@ -30,7 +30,7 @@ const ModalUserInterface = ({ closeModal, isOpen }) => {
         </div>
       </div>
 
-      <div className="sm:w-[35%] w-[60%]  ">
+      <div className="sm:w-[35%] ss:w-[60%] w-full  ">
         {/* Data retrieved by parent component from another child component is passed to this child component */}
         <RightSideCard valueFromChild={valueFromChild} />
       </div>

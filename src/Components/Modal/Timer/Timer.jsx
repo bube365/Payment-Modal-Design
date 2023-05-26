@@ -27,24 +27,24 @@ const Timer = ({ closeModal, isOpen }) => {
   }, [minutes, seconds]);
 
   return (
-    <div className="flex gap-1 mt-6 xs:mt-0">
-      <p className="text-mainWhite ">
-        <span className="bg-darkBlue p-1 text-[13px] rounded-[0.2rem]">
+    <div className="flex gap-1 mt-6 xs:mt-0 mr-1 sm:mr-0">
+      <div className="text-mainWhite flex ">
+        <p className="bg-darkBlue w-[1.5rem] text-center p-1 text-[13px] rounded-[0.2rem]">
           {preceedingMin}
-        </span>
-        <span className="bg-darkBlue ml-[1px] p-1 text-[13px] rounded-[0.2rem]">
+        </p>
+        <p className="bg-darkBlue ml-[1px] text-center w-[1.5rem]  p-1 text-[13px] rounded-[0.2rem]">
           {minutes}
-        </span>{" "}
-      </p>
+        </p>{" "}
+      </div>
       :
-      <p className="text-mainWhite ">
-        <span className="bg-darkBlue p-1 text-[13px] rounded-[0.2rem]">
+      <div className="text-mainWhite flex ml-1 sm:ml-0">
+        <p className="bg-darkBlue p-1 text-center w-[1.5rem] text-[13px] rounded-[0.2rem]">
           {preceedingSec}
-        </span>
-        <span className="bg-darkBlue ml-[1px] p-1 text-[13px] rounded-[0.2rem]">
+        </p>
+        <p className="bg-darkBlue ml-[1px] text-center w-[1.5rem] p-1 text-[13px] rounded-[0.2rem]">
           {seconds}
-        </span>
-      </p>
+        </p>
+      </div>
     </div>
   );
 };

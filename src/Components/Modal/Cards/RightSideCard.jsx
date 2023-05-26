@@ -9,7 +9,7 @@ const RightSideCard = ({ valueFromChild }) => {
     <section className="relative w-full text-darkBlue">
       <div className="bg-primary w-12 h-[0.35rem] rounded-[0.5rem] blueshadow mt-4  absolute left-[50%] top-[-4rem] z-[10] transform -translate-x-[50%]"></div>
 
-      <div className="shadoww w-[10rem] h-[12rem]  rounded-[0.5rem] p-2 text-[11px] font-semibold bg-white absolute top-[-2.75rem] left-[50%]  transform -translate-x-[50%]  flex flex-col justify-between">
+      <div className="shadoww w-[12rem] sm:w-[10rem] h-[12rem]  rounded-[0.5rem] p-2 text-[11px] font-semibold bg-white absolute top-[-2.75rem] left-[50%]  transform -translate-x-[50%]  flex flex-col justify-between">
         <div className="w-full flex items-center justify-between">
           <div className="atmBar h-[2rem] w-[2rem]"></div>
           <AiOutlineWifi className="text-[18px] " />

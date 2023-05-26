@@ -29,7 +29,7 @@ export default function PaymentModal({
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex min-h-full items-center justify-center p-6 md:px-48 xl:px-60 xxl:px-96 text-center">
+            <div className="flex min-h-full items-center justify-center p-6 md:px-40 xl:px-60 xxl:px-96 text-center">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"

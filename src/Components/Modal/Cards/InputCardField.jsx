@@ -27,9 +27,9 @@ const InputCardField = ({ onValueChange, closeModal }) => {
     setCardNumber(formattedCardNumber.join(""));
 
     if (inputCardNumber.length < 16) {
-      setCardVerification(<p className="text-red-500 text-[14px]">Invalid</p>);
+      setCardVerification(<p className="text-red-500 text-[12px]">Invalid</p>);
     } else if (inputCardNumber.length > 16) {
-      setCardVerification(<p className="text-red-500 text-[14px]">Invalid</p>);
+      setCardVerification(<p className="text-red-500 text-[12px]">Invalid</p>);
     } else {
       setCardVerification(<MdVerified className="text-primary text-[17px]" />);
       setLastDigits(formattedCardNumber.slice(-4));
@@ -57,7 +57,7 @@ const InputCardField = ({ onValueChange, closeModal }) => {
   }
 
   return (
-    <section className="text-darkBlue font-bold mt-4 text-[14px] ">
+    <section className="text-darkBlue font-bold mt-4 text-[12px] ">
       {/* <button onClick={handleClick}>Pass Value</button> */}
 
       <form onSubmit={handleSubmit}>

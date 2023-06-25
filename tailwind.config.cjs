@@ -5,21 +5,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#015eff",
-        secondary: "#00f6ff",
+        primary: "#62943b",
+        secondary: "#c3ca2b",
         mainWhite: "#fff",
         mainBlack: "000",
         dimWhite: "rgba(255, 255, 255, 0.9)",
-        darkBlue: "#1e2a53",
-        blue: "#1C2DC7",
-        GreyOne: "#1E1F34",
-        GreyTwo: "#41424F",
-        grey: "#8e93a6",
-        greyThree: "rgb(159, 159, 164, 0.3)",
-        greyFour: "rgb(159, 159, 164, 0.9)",
-        greyFive: "rgb(159, 159, 164, 0.125)",
-        greySix: "#e7ecef",
-        LightGrey: "rgb(159, 159, 164, 0.05)",
+        red: "rgb(219, 21, 21)",
+        lightGreen: "#f7fff3",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

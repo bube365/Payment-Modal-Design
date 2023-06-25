@@ -38,20 +38,50 @@
   width: 22px;
 }
 
-.masterCard1 {
-  background: url("../src/assets/MasterCard.JPG") center/cover no-repeat;
-  height: 25px;
-  width: 25px;
+.myshimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 50%;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  animation: shimmer 2s infinite linear;
 }
 
-.icons {
-  background: url("../src/assets/topRightImg.JPG") center no-repeat;
+.staffShrimer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10%;
+  height: 20%;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  animation: staffshimmer 2s infinite linear;
 }
 
-.atmBar {
-  background: url("../src/assets/AtmBar.JPG") center no-repeat;
+@keyframes shimmer {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(400%);
+  }
 }
 
-.footerIcon {
-  background: url("../src/assets/FooterIcon.JPG") center/cover no-repeat;
+@keyframes staffshimmer {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(600%);
+  }
 }

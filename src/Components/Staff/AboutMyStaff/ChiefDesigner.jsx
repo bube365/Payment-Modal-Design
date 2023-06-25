@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import ProfilePic from "../../../assets/profilePicture2.svg";
 import { FaTimes, FaArrowLeft } from "react-icons/fa";
 
 const ChiefDesigner = () => {
+  const [openChiefRemoveTab, setChiefOpenRemoveTab] = useState(false);
+  const [ChiefFirstName, setChiefFirstName] = useState("Austin");
+  const [ChiefLastName, setChiefLastName] = useState("Duke");
+  const [ChiefEmail, setChiefEmail] = useState("Me");
+  const [ChiefSkills, setChiefSkills] = useState(["me", ", ", "Goodthings"]);
+
+  // .......
+
+  const [selectChiefFirstName, setSelectChiefFirstName] = useState(false);
+  const [selectChiefLastName, setSelectChiefLastName] = useState(false);
+  const [selectChiefEmail, setSelectChiefEmail] = useState(false);
+  const [selectChiefSkills, setSelectChiefSkills] = useState(false);
   return (
     <>
       <div className="bg-lightGreen py-10 w-full h-[100vh] sm:h-full px-6 ">
@@ -22,22 +34,30 @@ const ChiefDesigner = () => {
             <div className="my-6 sm:my-4 flex flex-col">
               <div className=" w-full flex sm:flex-row flex-col mb-2">
                 <p className="w-28">FirstName :</p>
-                <p className="bg-transparent px-2 text-mainWhite">...</p>
+                <p className="bg-transparent px-2 text-mainWhite">
+                  {ChiefFirstName}
+                </p>
               </div>
 
               <div className=" w-full flex sm:flex-row flex-col mb-2">
                 <p className="w-28">LastName :</p>
-                <p className="bg-transparent px-2 text-mainWhite">...</p>
+                <p className="bg-transparent px-2 text-mainWhite">
+                  {ChiefLastName}
+                </p>
               </div>
 
               <div className=" w-full flex sm:flex-row flex-col mb-2">
                 <p className="w-28">Email :</p>
-                <p className="bg-transparent px-2 text-mainWhite">...</p>
+                <p className="bg-transparent px-2 text-mainWhite">
+                  {ChiefEmail}
+                </p>
               </div>
 
               <div className=" w-full flex sm:flex-row flex-col mb-2">
                 <p className="w-28">Skills :</p>
-                <p className="bg-transparent px-2 text-mainWhite">...</p>
+                <p className="bg-transparent px-2 text-mainWhite">
+                  {ChiefSkills}
+                </p>
               </div>
             </div>
 
@@ -50,7 +70,11 @@ const ChiefDesigner = () => {
               </button>
 
               <button
-                onClick={() => {}}
+                onClick={() => {
+                  openChiefRemoveTab
+                    ? setChiefOpenRemoveTab(false)
+                    : setChiefOpenRemoveTab(true);
+                }}
                 className="bg-mainWhite py-2  w-32 text-primary hover:bg-primary hover:border border-lightGreen rounded-md hover:text-lightGreen"
               >
                 Remove
@@ -58,59 +82,118 @@ const ChiefDesigner = () => {
             </div>
           </div>
 
-          <div className="sm:w-[15rem] w-[20rem] sm:text-[13px] text-[16px] rounded-r-md bg-primary border border-lightGreen sm:border-primary  p-2  absolute sm:bottom-2 sm:right-12 sm:top-48 top-24 right-0">
-            <h1 className="sm:text-[14px] text-[18px] font-semibold text-mainWhite flex justify-between items-center">
-              Remove Detail <FaArrowLeft />
-            </h1>
-            <p className="text-gray-200 my-2">
-              Select the detail/details you want to remove from profile
-            </p>
+          {openChiefRemoveTab ? (
+            <>
+              <div className="sm:w-[15rem] w-[20rem] sm:text-[13px] text-[16px] rounded-r-md bg-primary border border-lightGreen  sm:border-primary  p-2  absolute sm:bottom-2 sm:right-12 sm:top-48 top-24 right-0">
+                <h1 className="sm:text-[14px] text-[18px] font-semibold text-mainWhite flex justify-between items-center">
+                  Remove Detail <FaArrowLeft />
+                </h1>
+                <p className="text-gray-200 my-2">
+                  Select the detail/details you want to remove from profile
+                </p>
 
-            <div className="text-lightGreen font-medium  flex justify-between items-center px-2 py-1 ">
-              <p>FirstName</p>
-              <button
-                onClick={() => {}}
-                className="bg-mainWhite text-red font-bold rounded-full text-center sm:w-3 sm:h-3 w-4 h-4"
-              ></button>
-            </div>
+                <div className="text-lightGreen font-medium  flex justify-between items-center px-2 py-1 ">
+                  <p>FirstName</p>
+                  <button
+                    onClick={() => {
+                      selectChiefFirstName
+                        ? setSelectChiefFirstName(false)
+                        : setSelectChiefFirstName(true);
+                    }}
+                    className="bg-mainWhite text-red font-bold rounded-full text-center sm:w-3 sm:h-3 w-4 h-4"
+                  >
+                    {selectChiefFirstName ? <FaTimes /> : ""}
+                  </button>
+                </div>
 
-            <div className="text-lightGreen font-medium hover:pl-3  flex justify-between items-center px-2 py-1 ">
-              <p>LastName</p>
-              <button
-                onClick={() => {}}
-                className="bg-mainWhite text-red font-bold rounded-full text-center sm:w-3 sm:h-3 w-4 h-4"
-              ></button>
-            </div>
+                <div className="text-lightGreen font-medium hover:pl-3  flex justify-between items-center px-2 py-1 ">
+                  <p>LastName</p>
+                  <button
+                    onClick={() => {
+                      selectChiefLastName
+                        ? setSelectChiefLastName(false)
+                        : setSelectChiefLastName(true);
+                    }}
+                    className="bg-mainWhite text-red font-bold rounded-full text-center sm:w-3 sm:h-3 w-4 h-4"
+                  >
+                    {selectChiefLastName ? <FaTimes /> : ""}
+                  </button>
+                </div>
 
-            <div className="text-lightGreen font-medium hover:pl-3  flex justify-between items-center px-2 py-1 ">
-              <p>Email</p>
-              <button
-                onClick={() => {}}
-                className="bg-mainWhite text-red font-bold rounded-full text-center sm:w-3 sm:h-3 w-4 h-4"
-              ></button>
-            </div>
+                <div className="text-lightGreen font-medium hover:pl-3  flex justify-between items-center px-2 py-1 ">
+                  <p>Email</p>
+                  <button
+                    onClick={() => {
+                      selectChiefEmail
+                        ? setSelectChiefEmail(false)
+                        : setSelectChiefEmail(true);
+                    }}
+                    className="bg-mainWhite text-red font-bold rounded-full text-center sm:w-3 sm:h-3 w-4 h-4"
+                  >
+                    {selectChiefEmail ? <FaTimes /> : ""}
+                  </button>
+                </div>
 
-            <div className="text-lightGreen font-medium hover:pl-3  flex justify-between items-center px-2 py-1">
-              <p>Skills</p>
-              <button
-                onClick={() => {}}
-                className="bg-mainWhite text-red font-bold rounded-full text-center sm:w-3 sm:h-3 w-4 h-4"
-              ></button>
-            </div>
+                <div className="text-lightGreen font-medium hover:pl-3  flex justify-between items-center px-2 py-1">
+                  <p>Skills</p>
+                  <button
+                    onClick={() => {
+                      selectChiefSkills
+                        ? setSelectChiefSkills(false)
+                        : setSelectChiefSkills(true);
+                    }}
+                    className="bg-mainWhite text-red font-bold rounded-full text-center sm:w-3 sm:h-3 w-4 h-4"
+                  >
+                    {selectChiefSkills ? <FaTimes /> : ""}
+                  </button>
+                </div>
 
-            <div className="flex justify-end">
-              <button
-                onClick={() => {}}
-                className="bg-transparent mt-2 px-2 rounded-md border border-lightGreen text-mainWhite "
-              >
-                Done
-              </button>
-            </div>
-          </div>
+                <div className="flex justify-end">
+                  <button
+                    onClick={() => {
+                      setChiefOpenRemoveTab(false);
+
+                      if (selectChiefFirstName) {
+                        setChiefFirstName("");
+                      } else if (selectChiefLastName) {
+                        setChiefLastName("");
+                      } else if (selectChiefEmail) {
+                        setChiefEmail("");
+                      } else if (selectChiefSkills) {
+                        setChiefSkills([]);
+                      } else {
+                        return;
+                      }
+
+                      setSelectChiefFirstName(false);
+                      setSelectChiefLastName(false);
+                      setSelectChiefEmail(false);
+                      setSelectChiefSkills(false);
+                      // switch (true) {
+                      //   case selectCeoFirstName:
+                      //     setCeoFirstName("");
+                      //   case selectCeoLastName:
+                      //     setCeoLastName("");
+                      //   case selectCeoEmail:
+                      //     setCeoEmail("");
+
+                      //   default:
+                      //     break;
+                      // }
+                    }}
+                    className="bg-transparent mt-2 px-2 rounded-md border border-lightGreen text-mainWhite "
+                  >
+                    Done
+                  </button>
+                </div>
+              </div>
+            </>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </>
   );
 };
-
 export default ChiefDesigner;

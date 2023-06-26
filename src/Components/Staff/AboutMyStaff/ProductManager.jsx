@@ -154,7 +154,7 @@ const ProductManager = () => {
                         ? setSelectPMSkills(false)
                         : setSelectPMSkills(true);
                     }}
-                    className="bg-mainWhite text-red font-bold rounded-full text-center sm:w-3 sm:h-3 w-4 h-4"
+                    className="bg-red mt-2 px-2 rounded-md border border-red text-mainWhite "
                   >
                     {selectPMSkills ? <FaTimes /> : ""}
                   </button>

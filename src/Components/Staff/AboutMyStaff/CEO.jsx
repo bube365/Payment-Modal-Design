@@ -192,7 +192,7 @@ const CEO = () => {
                       setSelectCeoEmail(false);
                       setSelectCeoSkills(false);
                     }}
-                    className="bg-transparent mt-2 px-2 rounded-md border border-lightGreen text-mainWhite "
+                    className="bg-red mt-2 px-2 rounded-md border border-red text-mainWhite "
                   >
                     Done
                   </button>

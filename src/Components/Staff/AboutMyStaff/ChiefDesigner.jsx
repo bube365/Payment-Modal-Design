@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ProfilePic from "../../../assets/profilePicture2.svg";
+import ProfilePic from "../../../assets/profilePicture.svg";
 import { FaTimes, FaArrowLeft } from "react-icons/fa";
 import ChiefDesignerModal from "../../Modal/ChiefDesignerModal";
 
@@ -189,7 +189,7 @@ const ChiefDesigner = () => {
                       //     break;
                       // }
                     }}
-                    className="bg-transparent mt-2 px-2 rounded-md border border-lightGreen text-mainWhite "
+                    className="bg-red mt-2 px-2 rounded-md border border-red text-mainWhite "
                   >
                     Done
                   </button>

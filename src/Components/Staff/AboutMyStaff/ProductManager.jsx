@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import ProfilePic from "../../../assets/profilePicture2.svg";
 import { FaTimes, FaArrowLeft } from "react-icons/fa";
+import PMDetailModal from "../../Modal/PMDetailModal";
 
 const ProductManager = () => {
   const [openPMRemoveTab, setPMOpenRemoveTab] = useState(false);
-  const [PMFirstName, setPMFirstName] = useState("Austin");
-  const [PMLastName, setPMLastName] = useState("Duke");
-  const [PMEmail, setPMEmail] = useState("Me");
-  const [PMSkills, setPMSkills] = useState(["me", ", ", "Goodthings"]);
+
+  const ProductMFirstName = localStorage.getItem("PMFirstName");
+  const ProductMLastName = localStorage.getItem("PMLastName");
+  const ProductMEmail = localStorage.getItem("PMEmail");
+  const ProductMSkills = localStorage.getItem("PMSkills");
 
   // .......
 
@@ -15,6 +17,16 @@ const ProductManager = () => {
   const [selectPMLastName, setSelectPMLastName] = useState(false);
   const [selectPMEmail, setSelectPMEmail] = useState(false);
   const [selectPMSkills, setSelectPMSkills] = useState(false);
+
+  let [isOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
   return (
     <>
       <div className="bg-lightGreen py-10 w-full h-[100vh] sm:h-full px-6 ">
@@ -35,31 +47,35 @@ const ProductManager = () => {
               <div className=" w-full flex sm:flex-row flex-col mb-2">
                 <p className="w-28">FirstName :</p>
                 <p className="bg-transparent px-2 text-mainWhite">
-                  {PMFirstName}
+                  {ProductMFirstName}
                 </p>
               </div>
 
               <div className=" w-full flex sm:flex-row flex-col mb-2">
                 <p className="w-28">LastName :</p>
                 <p className="bg-transparent px-2 text-mainWhite">
-                  {PMLastName}
+                  {ProductMLastName}
                 </p>
               </div>
 
               <div className=" w-full flex sm:flex-row flex-col mb-2">
                 <p className="w-28">Email :</p>
-                <p className="bg-transparent px-2 text-mainWhite">{PMEmail}</p>
+                <p className="bg-transparent px-2 text-mainWhite">
+                  {ProductMEmail}
+                </p>
               </div>
 
               <div className=" w-full flex sm:flex-row flex-col mb-2">
                 <p className="w-28">Skills :</p>
-                <p className="bg-transparent px-2 text-mainWhite">{PMSkills}</p>
+                <p className="bg-transparent px-2 text-mainWhite">
+                  {ProductMSkills}
+                </p>
               </div>
             </div>
 
             <div className="flex justify-between items-center">
               <button
-                onClick={() => {}}
+                onClick={openModal}
                 className="bg-secondary py-2 w-32 rounded-md hover:bg-primary hover:border border-lightGreen "
               >
                 Add
@@ -150,13 +166,13 @@ const ProductManager = () => {
                       setPMOpenRemoveTab(false);
 
                       if (selectPMFirstName) {
-                        setPMFirstName("");
+                        localStorage.setItem("PMFirstName", "");
                       } else if (selectPMLastName) {
-                        setPMLastName("");
+                        localStorage.setItem("PMLastName", "");
                       } else if (selectPMEmail) {
-                        setPMEmail("");
+                        localStorage.setItem("PMEmail", "");
                       } else if (selectPMSkills) {
-                        setPMSkills([]);
+                        localStorage.setItem("PMSkills", []);
                       } else {
                         return;
                       }
@@ -165,6 +181,7 @@ const ProductManager = () => {
                       setSelectPMLastName(false);
                       setSelectPMEmail(false);
                       setSelectPMSkills(false);
+
                       // switch (true) {
                       //   case selectCeoFirstName:
                       //     setCeoFirstName("");
@@ -189,6 +206,15 @@ const ProductManager = () => {
           )}
         </div>
       </div>
+      {isOpen && (
+        <PMDetailModal
+          closeModal={closeModal}
+          openModal={openModal}
+          isOpen={isOpen}
+          title="Add Details To Profile"
+          text="Add Details"
+        />
+      )}
     </>
   );
 };

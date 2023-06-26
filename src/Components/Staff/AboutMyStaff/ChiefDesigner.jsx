@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import ProfilePic from "../../../assets/profilePicture2.svg";
 import { FaTimes, FaArrowLeft } from "react-icons/fa";
+import ChiefDesignerModal from "../../Modal/ChiefDesignerModal";
 
 const ChiefDesigner = () => {
   const [openChiefRemoveTab, setChiefOpenRemoveTab] = useState(false);
-  const [ChiefFirstName, setChiefFirstName] = useState("Austin");
-  const [ChiefLastName, setChiefLastName] = useState("Duke");
-  const [ChiefEmail, setChiefEmail] = useState("Me");
-  const [ChiefSkills, setChiefSkills] = useState(["me", ", ", "Goodthings"]);
+
+  const ChFirstName = localStorage.getItem("ChiefFirstName");
+  const ChLastName = localStorage.getItem("ChiefLastName");
+  const ChEmail = localStorage.getItem("ChiefEmail");
+  const ChSkills = localStorage.getItem("ChiefSkills");
 
   // .......
 
@@ -15,6 +17,16 @@ const ChiefDesigner = () => {
   const [selectChiefLastName, setSelectChiefLastName] = useState(false);
   const [selectChiefEmail, setSelectChiefEmail] = useState(false);
   const [selectChiefSkills, setSelectChiefSkills] = useState(false);
+
+  let [isOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
   return (
     <>
       <div className="bg-lightGreen py-10 w-full h-[100vh] sm:h-full px-6 ">
@@ -35,35 +47,31 @@ const ChiefDesigner = () => {
               <div className=" w-full flex sm:flex-row flex-col mb-2">
                 <p className="w-28">FirstName :</p>
                 <p className="bg-transparent px-2 text-mainWhite">
-                  {ChiefFirstName}
+                  {ChFirstName}
                 </p>
               </div>
 
               <div className=" w-full flex sm:flex-row flex-col mb-2">
                 <p className="w-28">LastName :</p>
                 <p className="bg-transparent px-2 text-mainWhite">
-                  {ChiefLastName}
+                  {ChLastName}
                 </p>
               </div>
 
               <div className=" w-full flex sm:flex-row flex-col mb-2">
                 <p className="w-28">Email :</p>
-                <p className="bg-transparent px-2 text-mainWhite">
-                  {ChiefEmail}
-                </p>
+                <p className="bg-transparent px-2 text-mainWhite">{ChEmail}</p>
               </div>
 
               <div className=" w-full flex sm:flex-row flex-col mb-2">
                 <p className="w-28">Skills :</p>
-                <p className="bg-transparent px-2 text-mainWhite">
-                  {ChiefSkills}
-                </p>
+                <p className="bg-transparent px-2 text-mainWhite">{ChSkills}</p>
               </div>
             </div>
 
             <div className="flex justify-between items-center">
               <button
-                onClick={() => {}}
+                onClick={openModal}
                 className="bg-secondary py-2 w-32 rounded-md hover:bg-primary hover:border border-lightGreen "
               >
                 Add
@@ -154,13 +162,13 @@ const ChiefDesigner = () => {
                       setChiefOpenRemoveTab(false);
 
                       if (selectChiefFirstName) {
-                        setChiefFirstName("");
+                        localStorage.setItem("ChiefFirstName", "");
                       } else if (selectChiefLastName) {
-                        setChiefLastName("");
+                        localStorage.setItem("ChiefLastName", "");
                       } else if (selectChiefEmail) {
-                        setChiefEmail("");
+                        localStorage.setItem("ChiefEmail", "");
                       } else if (selectChiefSkills) {
-                        setChiefSkills([]);
+                        localStorage.setItem("ChiefSkills", []);
                       } else {
                         return;
                       }
@@ -193,6 +201,15 @@ const ChiefDesigner = () => {
           )}
         </div>
       </div>
+      {isOpen && (
+        <ChiefDesignerModal
+          closeModal={closeModal}
+          openModal={openModal}
+          isOpen={isOpen}
+          title="Add Details To Profile"
+          text="Add Details"
+        />
+      )}
     </>
   );
 };

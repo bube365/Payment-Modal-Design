@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import ProfilePic from "../../../assets/profilePicture2.svg";
 import { FaTimes, FaArrowLeft } from "react-icons/fa";
+import FrontendDetailModal from "../../Modal/FrontendDetailModal";
 
 const FrontendEngineer = () => {
   const [openFrontRemoveTab, setFrontOpenRemoveTab] = useState(false);
-  const [FrontFirstName, setFrontFirstName] = useState("Austin");
-  const [FrontLastName, setFrontLastName] = useState("Duke");
-  const [FrontEmail, setFrontEmail] = useState("Me");
-  const [FrontSkills, setFrontSkills] = useState(["me", ", ", "Goodthings"]);
+
+  const FrFirstName = localStorage.getItem("FrontFirstName");
+  const FrLastName = localStorage.getItem("FrontLastName");
+  const FrEmail = localStorage.getItem("FrontEmail");
+  const FrSkills = localStorage.getItem("FrontSkills");
 
   // .......
 
@@ -15,6 +17,16 @@ const FrontendEngineer = () => {
   const [selectFrontLastName, setSelectFrontLastName] = useState(false);
   const [selectFrontEmail, setSelectFrontEmail] = useState(false);
   const [selectFrontSkills, setSelectFrontSkills] = useState(false);
+
+  let [isOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
   return (
     <>
       <div className="bg-lightGreen py-10 w-full h-[100vh] sm:h-full px-6 ">
@@ -35,35 +47,31 @@ const FrontendEngineer = () => {
               <div className=" w-full flex sm:flex-row flex-col mb-2">
                 <p className="w-28">FirstName :</p>
                 <p className="bg-transparent px-2 text-mainWhite">
-                  {FrontFirstName}
+                  {FrFirstName}
                 </p>
               </div>
 
               <div className=" w-full flex sm:flex-row flex-col mb-2">
                 <p className="w-28">LastName :</p>
                 <p className="bg-transparent px-2 text-mainWhite">
-                  {FrontLastName}
+                  {FrLastName}
                 </p>
               </div>
 
               <div className=" w-full flex sm:flex-row flex-col mb-2">
                 <p className="w-28">Email :</p>
-                <p className="bg-transparent px-2 text-mainWhite">
-                  {FrontEmail}
-                </p>
+                <p className="bg-transparent px-2 text-mainWhite">{FrEmail}</p>
               </div>
 
               <div className=" w-full flex sm:flex-row flex-col mb-2">
                 <p className="w-28">Skills :</p>
-                <p className="bg-transparent px-2 text-mainWhite">
-                  {FrontSkills}
-                </p>
+                <p className="bg-transparent px-2 text-mainWhite">{FrSkills}</p>
               </div>
             </div>
 
             <div className="flex justify-between items-center">
               <button
-                onClick={() => {}}
+                onClick={openModal}
                 className="bg-secondary py-2 w-32 rounded-md hover:bg-primary hover:border border-lightGreen "
               >
                 Add
@@ -154,13 +162,13 @@ const FrontendEngineer = () => {
                       setFrontOpenRemoveTab(false);
 
                       if (selectFrontFirstName) {
-                        setFrontFirstName("");
+                        localStorage.setItem("FrontFirstName", "");
                       } else if (selectFrontLastName) {
-                        setFrontLastName("");
+                        localStorage.setItem("FrontLastName", "");
                       } else if (selectFrontEmail) {
-                        setFrontEmail("");
+                        localStorage.setItem("FrontEmail", "");
                       } else if (selectFrontSkills) {
-                        setFrontSkills([]);
+                        localStorage.setItem("FrontSkills", []);
                       } else {
                         return;
                       }
@@ -193,6 +201,15 @@ const FrontendEngineer = () => {
           )}
         </div>
       </div>
+      {isOpen && (
+        <FrontendDetailModal
+          closeModal={closeModal}
+          openModal={openModal}
+          isOpen={isOpen}
+          title="Add Details To Profile"
+          text="Add Details"
+        />
+      )}
     </>
   );
 };

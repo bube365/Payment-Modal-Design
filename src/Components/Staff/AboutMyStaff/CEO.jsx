@@ -1,20 +1,31 @@
 import React, { useState } from "react";
 import ProfilePic from "../../../assets/profilePicture2.svg";
 import { FaTimes, FaArrowLeft } from "react-icons/fa";
+import AddDetailsModal from "../../Modal/AddDetailsModal";
 
 const CEO = () => {
   const [openRemoveTab, setOpenRemoveTab] = useState(false);
-  const [CeoFirstName, setCeoFirstName] = useState("Austin");
-  const [CeoLastName, setCeoLastName] = useState("Duke");
-  const [CeoEmail, setCeoEmail] = useState("Me");
-  const [CeoSkills, setCeoSkills] = useState(["me", ", ", "Goodthings"]);
 
+  const FirstName = localStorage.getItem("CeoFirstName");
+  const LastName = localStorage.getItem("CeoLastName");
+  const Email = localStorage.getItem("CeoEmail");
+  const Skills = localStorage.getItem("CeoSkills");
   // .......
 
   const [selectCeoFirstName, setSelectCeoFirstName] = useState(false);
   const [selectCeoLastName, setSelectCeoLastName] = useState(false);
   const [selectCeoEmail, setSelectCeoEmail] = useState(false);
   const [selectCeoSkills, setSelectCeoSkills] = useState(false);
+
+  let [isOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   return (
     <>
@@ -36,33 +47,29 @@ const CEO = () => {
               <div className=" w-full flex sm:flex-row flex-col mb-2">
                 <p className="w-28">FirstName :</p>
                 <p className="bg-transparent px-2 text-mainWhite">
-                  {CeoFirstName}
+                  {FirstName}
                 </p>
               </div>
 
               <div className=" w-full flex sm:flex-row flex-col mb-2">
                 <p className="w-28">LastName :</p>
-                <p className="bg-transparent px-2 text-mainWhite">
-                  {CeoLastName}
-                </p>
+                <p className="bg-transparent px-2 text-mainWhite">{LastName}</p>
               </div>
 
               <div className=" w-full flex sm:flex-row flex-col mb-2">
                 <p className="w-28">Email :</p>
-                <p className="bg-transparent px-2 text-mainWhite">{CeoEmail}</p>
+                <p className="bg-transparent px-2 text-mainWhite">{Email}</p>
               </div>
 
               <div className=" w-full flex sm:flex-row flex-col mb-2">
                 <p className="w-28">Skills :</p>
-                <p className="bg-transparent px-2 text-mainWhite">
-                  {CeoSkills}
-                </p>
+                <p className="bg-transparent px-2 text-mainWhite">{Skills}</p>
               </div>
             </div>
 
             <div className="flex justify-between items-center">
               <button
-                onClick={() => {}}
+                onClick={openModal}
                 className="bg-secondary py-2 w-32 rounded-md hover:bg-primary hover:border border-lightGreen "
               >
                 Add
@@ -166,16 +173,16 @@ const CEO = () => {
 
                       switch (true) {
                         case selectCeoFirstName:
-                          setCeoFirstName("");
+                          localStorage.setItem("CeoFirstName", "");
                           break;
                         case selectCeoLastName:
-                          setCeoLastName("");
+                          localStorage.setItem("CeoLastName", "");
                           break;
                         case selectCeoEmail:
-                          setCeoEmail("");
+                          localStorage.setItem("CeoEmail", "");
                           break;
                         case selectCeoSkills:
-                          setCeoSkills([]);
+                          localStorage.setItem("CeoSkills", []);
                         default:
                           break;
                       }
@@ -197,6 +204,16 @@ const CEO = () => {
           )}
         </div>
       </div>
+
+      {isOpen && (
+        <AddDetailsModal
+          closeModal={closeModal}
+          openModal={openModal}
+          isOpen={isOpen}
+          title="Add Details To Profile"
+          text="Add Details"
+        />
+      )}
     </>
   );
 };
